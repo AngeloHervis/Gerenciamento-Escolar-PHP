@@ -13,7 +13,7 @@ class Connect
     {
         $this->connectDatabase();
     }
-    
+
     function connectDatabase()
     {
         try {
