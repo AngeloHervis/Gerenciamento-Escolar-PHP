@@ -1,14 +1,13 @@
 <?php
-class Aluno
+class Turma
 {
     private $conn;
-    private $table_name = "alunos";
+    private $table_name = "turmas";
 
     public $id;
     public $nome;
-    public $dataNascimento;
-    public $cpf;
-    public $idTurma;
+    public $idProfessor;
+    public $idAula;
 
     public function __construct($db)
     {
@@ -17,13 +16,12 @@ class Aluno
 
     public function create()
     {
-        $query = "INSERT INTO " . $this->table_name . " (nome, dataNascimento, cpf, idTurma) VALUES (:nome, :dataNascimento, :cpf, :idTurma)";
+        $query = "INSERT INTO " . $this->table_name . " (nome, idProfessor, idAluno, idAula) VALUES (:nome, :idProfessor, :idAluno, :idAula)";
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(":nome", $this->nome);
-        $stmt->bindParam(":dataNascimento", $this->dataNascimento);
-        $stmt->bindParam(":cpf", $this->cpf);
-        $stmt->bindParam(":idTurma", $this->idTurma);
+        $stmt->bindParam(":idProfessor", $this->idProfessor);
+        $stmt->bindParam(":idAula", $this->idAula);
 
         if ($stmt->execute()) {
             return true;
@@ -41,14 +39,12 @@ class Aluno
 
     public function update()
     {
-        $query = "UPDATE " . $this->table_name . " SET nome = :nome, dataNascimento = :dataNascimento, cpf = :cpf, idTurma = :idTurma WHERE id = :id";
+        $query = "UPDATE " . $this->table_name . " SET nome = :nome, idProfessor = :idProfessor, idAluno = :idAluno, idAula = :idAula WHERE id = :id";
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(":nome", $this->nome);
-        $stmt->bindParam(":dataNascimento", $this->dataNascimento);
-        $stmt->bindParam(":cpf", $this->cpf);
-        $stmt->bindParam(":idTurma", $this->idTurma);
-        $stmt->bindParam(":id", $this->id);
+        $stmt->bindParam(":idProfessor", $this->idProfessor);
+        $stmt->bindParam(":idAula", $this->idAula);
 
         if ($stmt->execute()) {
             return true;

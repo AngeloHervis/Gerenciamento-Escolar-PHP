@@ -1,20 +1,62 @@
 <?php
+include_once '../config/db.php';
+include_once '../models/Aluno.php';
 
-require_once ("./models/Aluno.php");
-
-class alunoController
+class AlunoController
 {
-    private $model;
+    private $db;
+    private $aluno;
 
-    function __construct()
+    public function __construct()
     {
-        $this->model = new AlunoModel();
+        $this->db = (new Database())->getConnection();
+        $this->aluno = new Aluno($this->db);
     }
 
-    function getAll() {
-        $resultData = $this->model->getAll();
-        require_once ("./views/index.php");
+    public function create($data)
+    {
+        $this->aluno->nome = $data['nome'];
+        $this->aluno->dataNascimento = $data['dataNascimento'];
+        $this->aluno->cpf = $data['cpf'];
+        $this->aluno->idTurma = $data['idTurma'];
+
+        if ($this->aluno->create()) {
+            echo "Aluno criado com sucesso.";
+        } else {
+            echo "Erro ao criar aluno.";
+        }
+    }
+
+    public function read()
+    {
+        $stmt = $this->aluno->read();
+        $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $alunos;
+    }
+
+    public function update($data)
+    {
+        $this->aluno->id = $data['id'];
+        $this->aluno->nome = $data['nome'];
+        $this->aluno->dataNascimento = $data['dataNascimento'];
+        $this->aluno->cpf = $data['cpf'];
+        $this->aluno->idTurma = $data['idTurma'];
+
+        if ($this->aluno->update()) {
+            echo "Aluno atualizado com sucesso.";
+        } else {
+            echo "Erro ao atualizar aluno.";
+        }
+    }
+
+    public function delete($id)
+    {
+        $this->aluno->id = $id;
+
+        if ($this->aluno->delete()) {
+            echo "Aluno deletado com sucesso.";
+        } else {
+            echo "Erro ao deletar aluno.";
+        }
     }
 }
-
-?>
