@@ -39,7 +39,6 @@ class ProfessorController
         $this->professor->nome = $data['nome'];
         $this->professor->cpf = $data['cpf'];
         $this->professor->materia = $data['materia'];
-        $this->professor->idTurma = $data['idTurma'];
 
         if ($this->professor->update()) {
             echo "Professor atualizado com sucesso.";
