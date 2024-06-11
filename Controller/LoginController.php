@@ -7,6 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         setcookie("lembrar_senha", "", time() - 3600, "/");
     }
-    header("Location: index.php");
+    header("Location: Login.php");
     exit;
 }
