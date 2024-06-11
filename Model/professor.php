@@ -1,5 +1,5 @@
 <?php
-include_once('conexao.php');
+include_once('Connect.php');
 
 class Professor {
     private $id;
@@ -17,7 +17,7 @@ class Professor {
         $this->materia_id = $materia_id;
     }
 
-    public function cadastraProfessor() {
+    public function cadastrarProfessor() {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("INSERT INTO professores (nome, sobrenome, graduacao, data_nascimento, materia_id) VALUES (:nome, :sobrenome, :graduacao, :data_nascimento, :materia_id)");
@@ -32,7 +32,7 @@ class Professor {
         }
     }
 
-    public function ListaProfessor() {
+    public function listarProfessor() {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("
@@ -61,18 +61,35 @@ class Professor {
         }
     }
 
-    public function atualizarMateria($id) {
-    try {
-        $conn = Conexao::conectar();
-        $sql = $conn->prepare("UPDATE materias SET nome = :nome, descricao = :descricao WHERE id = :id");
-        $sql->bindParam(':nome', $this->nome);
-        $sql->bindParam(':descricao', $this->descricao);
-        $sql->bindParam(':id', $id);
-        $sql->execute();
-    } catch(PDOException $erro) {
-        echo "Erro ao atualizar matéria! " . $erro->getMessage();
+    public function editarProfessor($id, $nome, $sobrenome, $graduacao, $data_nascimento, $materia_id) {
+        try {
+            $conn = Conexao::conectar();
+            $sql = $conn->prepare("UPDATE professores SET nome = :nome, sobrenome = :sobrenome, graduacao = :graduacao, data_nascimento = :data_nascimento, materia_id = :materia_id WHERE id = :id");
+            $sql->bindParam(':id', $id);
+            $sql->bindParam(':nome', $nome);
+            $sql->bindParam(':sobrenome', $sobrenome);
+            $sql->bindParam(':graduacao', $graduacao);
+            $sql->bindParam(':data_nascimento', $data_nascimento);
+            $sql->bindParam(':materia_id', $materia_id);
+            $sql->execute();
+        } catch(PDOException $erro) {
+            echo "Erro ao editar professor! " . $erro->getMessage();
+        }
     }
-}
+
+    public function getProfessorById($id) {
+        try {
+            $conn = Conexao::conectar();
+            $sql = $conn->prepare("SELECT id, nome, sobrenome, graduacao, data_nascimento, materia_id FROM professores WHERE id = :id");
+            $sql->bindParam(':id', $id);
+            $sql->execute();
+            $result = $sql->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        } catch(PDOException $erro) {
+            echo "Erro ao buscar professor! " . $erro->getMessage();
+            return null;
+        }
+    }
 
     public function getNome() {
         return $this->nome;
@@ -98,20 +115,20 @@ class Professor {
         $this->graduacao = $graduacao;
     }
 
-    public function getMateriaId() {
-        return $this->materia_id;
-    }
-
-    public function setMateriaId($materia_id) {
-        $this->materia_id = $materia_id;
-    }
-
     public function getDataNascimento() {
         return $this->data_nascimento;
     }
 
     public function setDataNascimento($data_nascimento) {
         $this->data_nascimento = $data_nascimento;
+    }
+
+    public function getMateriaId() {
+        return $this->materia_id;
+    }
+
+    public function setMateriaId($materia_id) {
+        $this->materia_id = $materia_id;
     }
 
     public function getId() {

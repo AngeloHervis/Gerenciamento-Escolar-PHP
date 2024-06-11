@@ -1,8 +1,10 @@
 <?php
-include_once('../Model/professor.php');
+include_once('../Model/Professor.php');
 
-class ProfessorController {
-    public function processa($acao) {
+class ProfessorController
+{
+    public function processar($acao)
+    {
         if ($acao == "C") {
             $nome = $_POST['nome'];
             $sobrenome = $_POST['sobrenome'];
@@ -10,57 +12,97 @@ class ProfessorController {
             $data_nascimento = $_POST['data_nascimento'];
             $materia_id = $_POST['materia_id'];
             $novoProfessor = new Professor($nome, $sobrenome, $graduacao, $data_nascimento, $materia_id);
-            $novoProfessor->cadastraProfessor();
+            $novoProfessor->cadastrarProfessor();
             echo "Professor cadastrado com sucesso!";
         } elseif ($acao == "R") {
-            $Professor = new Professor();
-            $resultado = $Professor->ListaProfessor();
-            include_once('../View/listarprofessor.php');
+            $professor = new Professor();
+            $resultado = $professor->listarProfessor();
+            include_once('../View/listarProfessor.php');
+        }elseif ($acao == "U") {
+            $id = $_POST['id'];
+            $nome = $_POST['nome'];
+            $sobrenome = $_POST['sobrenome'];
+            $graduacao = $_POST['graduacao'];
+            $data_nascimento = $_POST['data_nascimento'];
+            $materia_id = $_POST['materia_id'];
+            $professor = new Professor();
+            $professor->editarProfessor($id, $nome, $sobrenome, $graduacao, $data_nascimento, $materia_id);
+            echo "Professor atualizado com sucesso!";
+        }else if ($acao == "D") {
+            $id = $_POST['id'];
+            $professor = new Professor();
+            $professor->excluirProfessor($id);
+            echo "Professor excluído com sucesso!";
         }
     }
 
-    public function processaDelete($id) {
-        $professor = new Professor();
-        $professor->excluirProfessor($id);
-        header("Location: ../Controller/professorController.php?action=R");
-        exit();
-    }
+    public function processarUpdate($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nome = $_POST['nome'];
+            $sobrenome = $_POST['sobrenome'];
+            $graduacao = $_POST['graduacao'];
+            $data_nascimento = $_POST['data_nascimento'];
+            $materia_id = $_POST['materia_id'];
 
-    public function processaUpdate($id) {
-        $nome = $_POST['nome'];
-        $descricao = $_POST['descricao'];
-        $materia = new Materia();
-        $materia->setNome($nome);
-        $materia->setDescricao($descricao);
-        $materia->atualizarMateria($id);
-        echo "Matéria atualizada com sucesso!";
-    }
+            $professor = new Professor();
+            $professor->editarProfessor($id, $nome, $sobrenome, $graduacao, $data_nascimento, $materia_id);
 
-    public function processaEdit($id) {
-        $materia = new Materia();
-        $materiaAtual = $materia->getId($id);
-        include_once('../View/editar.php');
+            header("Location: ../Controller/ProfessorController.php?action=R");
+            exit();
+        } else {
+            $professor = new Professor();
+            $professorAtual = $professor->getProfessorById($id);
+            include_once('../View/editarProfessor.php');
     }
 }
 
-// Handling the request
+    public function processarDelete($id)
+    {
+        $professor = new Professor();
+        $professor->excluirProfessor($id);
+        header("Location: ../Controller/ProfessorController.php?action=R");
+        exit();
+    }
+
+    public function processarEdit($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nome = $_POST['nome'];
+            $sobrenome = $_POST['sobrenome'];
+            $graduacao = $_POST['graduacao'];
+            $data_nascimento = $_POST['data_nascimento'];
+            $materia_id = $_POST['materia_id'];
+
+            $professor = new Professor();
+            $professor->editarProfessor($id, $nome, $sobrenome, $graduacao, $data_nascimento, $materia_id);
+
+            header("Location: ../Controller/ProfessorController.php?action=R");
+            exit();
+        } else {
+            $professor = new Professor();
+            $professorAtual = $professor->getProfessorById($id);
+            include_once('../View/editarProfessor.php');
+        }
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $acao = $_POST['action'];
     $controller = new ProfessorController();
-    $controller->processa($acao);
+    $controller->processar($acao);
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
         $id = $_GET['id'];
         $controller = new ProfessorController();
-        $controller->processaDelete($id);
+        $controller->processarDelete($id);
     } elseif (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id'])) {
         $id = $_GET['id'];
         $controller = new ProfessorController();
-        $controller->processaEdit($id);
+        $controller->processarEdit($id);
     } else {
         $acao = $_GET['action'];
         $controller = new ProfessorController();
-        $controller->processa($acao);
+        $controller->processar($acao);
     }
 }
-?>

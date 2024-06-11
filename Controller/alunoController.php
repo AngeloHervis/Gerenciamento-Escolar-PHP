@@ -1,67 +1,110 @@
 <?php
-include_once('../Model/aluno.php');
+include_once('../Model/Aluno.php');
 
-class AlunoController {
-    public function processa($acao) {
-        if ($acao == "C") {
-            $nome = $_POST['nome'];
-            $sobrenome = $_POST['sobrenome'];
-            $serie = $_POST['serie'];
-            $dataNascimento = $_POST['data_nascimento'];
-            $salaId = $_POST['sala_id'];
-            $novoAluno = new Aluno($nome, $sobrenome, $serie, $dataNascimento, $salaId);
-            $novoAluno->cadastraAluno();
-            echo "Aluno cadastrado com sucesso!";
-        } elseif ($acao == "R") {
-            $aluno = new Aluno();
-            $resultado = $aluno->listaAluno();
-            include_once('../View/listaraluno.php');
+class AlunoController
+{
+    public function processar($acao)
+    {
+        switch ($acao) {
+            case "C":
+                $nome = $_POST['nome'] ?? '';
+                $sobrenome = $_POST['sobrenome'] ?? '';
+                $serie = $_POST['serie'] ?? '';
+                $dataNascimento = $_POST['data_nascimento'] ?? '';
+                $salaId = $_POST['sala_id'] ?? '';
+                if ($nome && $sobrenome && $serie && $dataNascimento && $salaId) {
+                    $novoAluno = new Aluno($nome, $sobrenome, $serie, $dataNascimento, $salaId);
+                    $novoAluno->cadastrarAluno();
+                    echo "Aluno cadastrado com sucesso!";
+                } else {
+                    echo "Dados incompletos para cadastro.";
+                }
+                break;
+            case "R":
+                $aluno = new Aluno();
+                $resultado = $aluno->listarAluno();
+                include_once('../View/ListarAluno.php');
+                break;
+            default:
+                echo "Ação desconhecida!";
+                break;
+            case "U":
+                $id = $_POST['id'] ?? '';
+                $nome = $_POST['nome'] ?? '';
+                $sobrenome = $_POST['sobrenome'] ?? '';
+                $serie = $_POST['serie'] ?? '';
+                $dataNascimento = $_POST['data_nascimento'] ?? '';
+                $salaId = $_POST['sala_id'] ?? '';
+                if ($id && $nome && $sobrenome && $serie && $dataNascimento && $salaId) {
+                    $aluno = new Aluno($nome, $sobrenome, $serie, $dataNascimento, $salaId);
+                    $aluno->editarAluno($id, $nome, $sobrenome, $serie, $dataNascimento, $salaId);
+                    echo "Aluno atualizado com sucesso!";
+                } else {
+                    echo "Dados incompletos para atualização.";
+                }
+                break;
+            case "D":
+                $id = $_POST['id'] ?? '';
+                $aluno = new Aluno();
+                $aluno->excluirAluno($id);
+                echo "Aluno excluído com sucesso!";
+                break;
         }
     }
 
-    public function processaDelete($id) {
+    public function processarDelete($id)
+    {
         $aluno = new Aluno();
         $aluno->excluirAluno($id);
-        header("Location: ../Controller/alunoController.php?action=R");
+        header("Location: ../Controller/AlunoController.php?action=R");
         exit();
     }
 
-    public function processaUpdate($id) {
-        $nome = $_POST['nome'];
-        $sobrenome = $_POST['sobrenome'];
-        $serie = $_POST['serie'];
-        $dataNascimento = $_POST['data_nascimento'];
-        $salaId = $_POST['sala_id'];
-        $aluno = new Aluno($nome, $sobrenome, $serie, $dataNascimento, $salaId);
-        $aluno->atualizarAluno($id);
+    public function processarUpdate($id)
+    {
+        $nome = $_POST['nome'] ?? '';
+        $sobrenome = $_POST['sobrenome'] ?? '';
+        $serie = $_POST['serie'] ?? '';
+        $dataNascimento = $_POST['data_nascimento'] ?? '';
+        $salaId = $_POST['sala_id'] ?? '';
+        $aluno = new Aluno();
+        $aluno->setNome($nome);
+        $aluno->setSobrenome($sobrenome);
+        $aluno->setSerie($serie);
+        $aluno->setDataNascimento($dataNascimento);
+        $aluno->setSalaId($salaId);
+        $aluno->editarAluno($id, $nome, $sobrenome, $serie, $dataNascimento, $salaId);
         echo "Aluno atualizado com sucesso!";
     }
 
-    public function processaEdit($id) {
+    public function processarEdit($id)
+    {
         $aluno = new Aluno();
-        $alunoAtual = $aluno->getId($id);
-        include_once('../View/editarAluno.php');
+        $alunoAtual = $aluno->buscarAlunoPorId($id);
+        if ($alunoAtual) {
+            include_once('../View/EditarAluno.php');
+        } else {
+            echo "Aluno não encontrado!";
+        }
     }
 }
 
-// Handling the request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $acao = $_GET['action'];
+    $acao = $_GET['action'] ?? '';
     $controller = new AlunoController();
-    $controller->processa($acao);
+    $controller->processar($acao);
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $controller = new AlunoController();
-        $controller->processaDelete($id);
-    } elseif (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $controller = new AlunoController();
-        $controller->processaEdit($id);
-    } else {
+    $controller = new AlunoController();
+    if (isset($_GET['action'])) {
         $acao = $_GET['action'];
-        $controller = new AlunoController();
-        $controller->processa($acao);
+        if ($acao == 'delete' && isset($_GET['id'])) {
+            $controller->processarDelete($_GET['id']);
+        } elseif ($acao == 'edit' && isset($_GET['id'])) {
+            $controller->processarEdit($_GET['id']);
+        } else {
+            $controller->processar($acao);
+        }
+    } else {
+        echo "Ação não especificada.";
     }
 }
-?>
