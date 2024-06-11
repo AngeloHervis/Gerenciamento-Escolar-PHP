@@ -65,7 +65,7 @@ class MateriaController
             exit();
         } else {
             $materia = new Materia();
-            $materiaAtual = $materia->getMateriaById($id);
+            $materiaAtual = $materia->buscarMateriaPorId($id);
             include_once('../View/Editar.php');
         }
     }

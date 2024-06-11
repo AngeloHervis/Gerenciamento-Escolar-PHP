@@ -45,7 +45,6 @@ class Aula
                 JOIN materias ON aulas.disciplina_id = materias.id
                 JOIN professores ON aulas.professor_id = professores.id
                 JOIN salas ON aulas.sala_id = salas.id
-                ORDER BY aulas.horario_inicio
             ");
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -68,34 +67,20 @@ class Aula
         }
     }
 
-    public function editarAula($id, $horarioInicio, $horarioFim, $disciplinaId, $professorId, $salaId)
+    public function atualizarAula($id)
     {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("UPDATE aulas SET horario_inicio = :horario_inicio, horario_fim = :horario_fim, disciplina_id = :disciplina_id, professor_id = :professor_id, sala_id = :sala_id WHERE id = :id");
-            $sql->bindParam(':id', $id);
-            $sql->bindParam(':horario_inicio', $horarioInicio);
-            $sql->bindParam(':horario_fim', $horarioFim);
-            $sql->bindParam(':disciplina_id', $disciplinaId);
-            $sql->bindParam(':professor_id', $professorId);
-            $sql->bindParam(':sala_id', $salaId);
-            $sql->execute();
-        } catch (PDOException $erro) {
-            echo "Erro ao editar aula! " . $erro->getMessage();
-        }
-    }
-
-    public function buscarAulaPorId($id)
-    {
-        try {
-            $conn = Conexao::conectar();
-            $sql = $conn->prepare("SELECT * FROM aulas WHERE id = :id");
+            $sql->bindParam(':horario_inicio', $this->horarioInicio);
+            $sql->bindParam(':horario_fim', $this->horarioFim);
+            $sql->bindParam(':disciplina_id', $this->disciplinaId);
+            $sql->bindParam(':professor_id', $this->professorId);
+            $sql->bindParam(':sala_id', $this->salaId);
             $sql->bindParam(':id', $id);
             $sql->execute();
-            return $sql->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $erro) {
-            echo "Erro ao buscar aula! " . $erro->getMessage();
-            return null;
+            echo "Erro ao atualizar aula! " . $erro->getMessage();
         }
     }
 

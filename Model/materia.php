@@ -66,7 +66,7 @@ class Materia
         }
     }
 
-    public function getMateriaById($id)
+    public function buscarMateriaPorId($id)
     {
         try {
             $conn = Conexao::conectar();

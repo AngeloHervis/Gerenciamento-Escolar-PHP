@@ -3,7 +3,7 @@ include_once('../Model/outrofuncionario.php'); // Importando a classe Materia
 
 // Recebendo os dados da consulta
 $outroFuncionario = new OutroFuncionario();
-$resultado = $outroFuncionario->ListaOutroFuncionario(); // Executando a consulta para listar as matérias
+$resultado = $outroFuncionario->ListarOutroFuncionario(); // Executando a consulta para listar as matérias
 
 // Verificando se há resultados
 if (count($resultado) > 0) {

@@ -1,20 +1,18 @@
 <?php
-include_once('../Model/aluno.php'); // Importando a classe Aluno
-
-// Recebendo os dados da consulta
+include_once('../Model/Aluno.php');
 $alunos = new Aluno();
-$resultado = $alunos->listaAluno(); // Executando a consulta para listar os alunos
-
-// Verificando se há resultados
+$resultado = $alunos->listarAluno();
 if (count($resultado) > 0) {
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Lista de Alunos</title>
 </head>
+
 <body>
     <h1>Lista de Alunos</h1>
     <table>
@@ -45,6 +43,7 @@ if (count($resultado) > 0) {
         </tbody>
     </table>
 </body>
+
 </html>
 
 <?php

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Aula</title>
 </head>
+
 <body>
     <h1>Cadastrar Aula</h1>
-    <form method="POST" action="../Controller/aulaController.php?action=C">
+    <form method="POST" action="../Controller/AulaController.php?action=C">
         <label>Horário de Início:</label>
         <input type="datetime-local" name="horario_inicio" required><br><br>
 
@@ -16,18 +18,11 @@
         <label>Disciplina:</label>
         <select name="disciplina_id" required>
             <?php
-            // Incluir o arquivo de conexão com o banco de dados
-            include_once('../Model/materia.php');
-
-            // Criar uma instância da classe Materia
+            include_once('../Model/Materia.php');
             $materias = new Materia();
+            $resultado = $materias->listarMaterias();
 
-            // Recuperar a lista de disciplinas
-            $resultado = $materias->ListaMateria();
-
-            // Verificar se há resultados
             if (count($resultado) > 0) {
-                // Loop através dos resultados para criar as opções do select
                 foreach ($resultado as $materia) {
                     echo "<option value='" . $materia['id'] . "'>" . $materia['nome'] . "</option>";
                 }
@@ -40,18 +35,13 @@
         <label>Professor:</label>
         <select name="professor_id" required>
             <?php
-            // Incluir o arquivo de conexão com o banco de dados
-            include_once('../Model/professor.php');
+            include_once('../Model/Professor.php');
 
-            // Criar uma instância da classe Professor
             $professores = new Professor();
 
-            // Recuperar a lista de professores
-            $resultado = $professores->ListaProfessor();
+            $resultado = $professores->listarProfessor();
 
-            // Verificar se há resultados
             if (count($resultado) > 0) {
-                // Loop através dos resultados para criar as opções do select
                 foreach ($resultado as $professor) {
                     echo "<option value='" . $professor['id'] . "'>" . $professor['nome'] . " " . $professor['sobrenome'] . "</option>";
                 }
@@ -67,4 +57,5 @@
         <button type="submit">Cadastrar</button><br><br>
     </form>
 </body>
+
 </html>

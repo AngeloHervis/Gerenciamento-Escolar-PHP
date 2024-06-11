@@ -3,7 +3,7 @@ include_once('../Model/sala.php'); // Importando a classe Materia
 
 // Recebendo os dados da consulta
 $salas = new Sala();
-$resultado = $salas->ListaSala(); // Executando a consulta para listar as matérias
+$resultado = $salas->ListarSala(); // Executando a consulta para listar as matérias
 
 // Verificando se há resultados
 if (count($resultado) > 0) {
