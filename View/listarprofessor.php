@@ -1,20 +1,18 @@
 <?php
-include_once('../Model/professor.php'); // Importando a classe Materia
-
-// Recebendo os dados da consulta
+include_once('../Model/Professor.php');
 $professores = new Professor();
-$resultado = $professores->ListaProfessor(); // Executando a consulta para listar as matérias
-
-// Verificando se há resultados
+$resultado = $professores->listarProfessor();
 if (count($resultado) > 0) {
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Lista de Professores</title>
 </head>
+
 <body>
     <h1>Lista de Professores</h1>
     <table>
@@ -36,14 +34,15 @@ if (count($resultado) > 0) {
                 echo "<td>" . $professor['graduacao'] . "</td>";
                 echo "<td>" . $professor['data_nascimento'] . "</td>";
                 echo "<td>" . $professor['nome_materia'] . "</td>";
-                echo "<td><a href='../Controller/professorController.php?action=delete&id=" . $professor['id'] . "'>Excluir</a></td>"; // Cor
-                echo "<td><a href='../View/editar.php?id=" . $materia['id'] . "'>Editar</a></td>";
+                echo "<td><a href='../Controller/ProfessorController.php?action=delete&id=" . $professor['id'] . "'>Excluir</a></td>";
+                echo "<td><a href='../View/Editar.php?id=" . $materia['id'] . "'>Editar</a></td>";
                 echo "</tr>";
             }
             ?>
         </tbody>
     </table>
 </body>
+
 </html>
 
 <?php

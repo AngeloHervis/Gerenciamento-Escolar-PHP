@@ -1,6 +1,6 @@
 <?php 
-    require_once('../Model/conexao.php');
+    require_once('../Model/Connect.php');
 
-    $conectar = new Conexao(); //Atribuição do objeto a uma variável
-    $conectar->conectar();//Chamando método da classe conexão
+    $conectar = new Conexao();
+    $conectar->conectar();
 ?>

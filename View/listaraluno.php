@@ -35,8 +35,8 @@ if (count($resultado) > 0) {
                 echo "<td>" . $aluno['serie'] . "</td>";
                 echo "<td>" . $aluno['data_nascimento'] . "</td>";
                 echo "<td>" . $aluno['numero_sala'] . "</td>";
-                echo "<td><a href='../Controller/alunoController.php?action=delete&id=" . $aluno['id'] . "'>Excluir</a></td>";
-                echo "<td><a href='../View/editarAluno.php?id=" . $aluno['id'] . "'>Editar</a></td>";
+                echo "<td><a href='../Controller/AlunoController.php?action=delete&id=" . $aluno['id'] . "'>Excluir</a></td>";
+                echo "<td><a href='../View/EditarAluno.php?id=" . $aluno['id'] . "'>Editar</a></td>";
                 echo "</tr>";
             }
             ?>

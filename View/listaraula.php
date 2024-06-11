@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Lista de Aulas</title>
 </head>
+
 <body>
     <h1>Lista de Aulas</h1>
     <table>
@@ -20,13 +22,13 @@
         <tbody>
             <?php
          
-            include_once('../Model/aula.php');
+            include_once('../Model/Aula.php');
 
             
             $aulas = new Aula();
 
          
-            $resultado = $aulas->ListaAulas();
+            $resultado = $aulas->listarAulas();
 
           
             if (count($resultado) > 0) {
@@ -38,8 +40,8 @@
                    echo "<td>" . $aula['disciplina'] . "</td>"; 
                    echo "<td>" . $aula['professor'] . "</td>"; 
                    echo "<td>" . $aula['sala'] . "</td>";
-                   echo "<td><a href='../Controller/aulaController.php?action=delete&id=" . $aula['id'] . "'>Excluir</a></td>";
-                   echo "<td><a href='../View/editar.php?id=" . $aula['id'] . "'>Editar</a></td>";
+                   echo "<td><a href='../Controller/AulaController.php?action=delete&id=" . $aula['id'] . "'>Excluir</a></td>";
+                   echo "<td><a href='../View/Editar.php?id=" . $aula['id'] . "'>Editar</a></td>";
                    echo "</tr>";
                }
 
@@ -50,4 +52,5 @@
         </tbody>
     </table>
 </body>
+
 </html>
