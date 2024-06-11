@@ -1,7 +1,7 @@
 <?php
 include_once('../Model/Materia.php');
 $materias = new Materia();
-$resultado = $materias->ListarMaterias();
+$resultado = $materias->listarMaterias();
 if (count($resultado) > 0) {
 ?>
 
