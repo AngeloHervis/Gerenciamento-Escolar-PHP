@@ -8,9 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/View/pags/css/index.css"> 
-    <style>
-        /* Estilos adicionais podem ser adicionados aqui */
-    </style>
 </head>
 <body>
     <header>
@@ -28,32 +25,31 @@
     </header>
     
     <main>
-        <section class="faleconosco-section">
-            <h1>Fale Conosco</h1>
-            <p>Se você tiver qualquer dúvida ou quiser entrar em contato conosco, preencha o formulário abaixo ou use um dos métodos de contato listados.</p>
-            
-            <h2>Formulário de Contato</h2>
-            <form action="send_faleconosco.php" method="post">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Mensagem:</label>
-                <textarea id="message" name="message" required></textarea>
-                
-                <button type="submit">Enviar</button>
-            </form>
+        <section class="welcome-section">
+            <div class="content">
+                <h1>Fale Conosco</h1>
+            </div>
         </section>
-
+        <section class="faleconosco-section">
+            <div class="content">
+                <h1>Fale Conosco</h1>
+                <p>Se você tiver qualquer dúvida ou quiser entrar em contato conosco, use um dos métodos de contato listados abaixo.</p>
+                
+                <h2>Contato</h2>
+                <p><strong>Telefone:</strong> 41 99585-5245</p>
+                <p><strong>Email:</strong> nova.era@gmail.com</p>
+                <p><strong>Localização:</strong> Praça Gen. Osório, 125 - Centro, Curitiba - PR, 80020-010</p>
+            </div>
+        </section>
         <section class="social-section" id="social-section">
-            <h2>Acesse nossas redes sociais!</h2>
-            <ul>
-                <li><a href="#"><img src="/assets/facebook-svgrepo-com.svg" alt="Facebook"></a></li>
-                <li><a href="#"><img src="/assets/youtube-svgrepo-com.svg" alt="Youtube"></a></li>
-                <li><a href="#"><img src="/assets/instagram-svgrepo-com.svg" alt="Instagram"></a></li>
-            </ul>
+            <div class="content">
+                <h2>Acesse nossas redes sociais!</h2>
+                <ul>
+                    <li><a href="#"><img src="/assets/facebook-svgrepo-com.svg" alt="Facebook"></a></li>
+                    <li><a href="#"><img src="/assets/youtube-svgrepo-com.svg" alt="Youtube"></a></li>
+                    <li><a href="#"><img src="/assets/instagram-svgrepo-com.svg" alt="Instagram"></a></li>
+                </ul>
+            </div>
         </section>
     </main>
     <footer class="footer">

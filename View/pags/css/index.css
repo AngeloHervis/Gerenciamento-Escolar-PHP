@@ -53,7 +53,7 @@ body {
     margin: 0 auto;
 }
 .social-section {
-    padding: 200px 90px;
+    padding: 150px 90px;
     text-align: center;
     background-color: #f4f4f4;
 }
@@ -65,7 +65,7 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
 }
 .social-section ul li {
     display: inline;
@@ -86,4 +86,30 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+/* sobre */
+.sobre-section {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+.sobre-section h2 {
+    margin-bottom: 20px;
+}
+.sobre-section p {
+    max-width: 600px;
+    margin: 0 auto;
+}
+/* faleconosco */
+.faleconosco-section {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+.faleconosco-section h2 {
+    margin-bottom: 20px;
+}
+.faleconosco-section p {
+    max-width: 600px;
+    margin: 0 auto;
 }
