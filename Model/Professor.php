@@ -1,8 +1,7 @@
 <?php
 include_once('Connect.php');
 
-class Professor
-{
+class Professor {
     private $id;
     private $nome;
     private $sobrenome;
@@ -10,8 +9,7 @@ class Professor
     private $data_nascimento;
     private $materia_id;
 
-    public function __construct($nome = null, $sobrenome = null, $graduacao = null, $data_nascimento = null, $materia_id = null)
-    {
+    public function __construct($nome = null, $sobrenome = null, $graduacao = null, $data_nascimento = null, $materia_id = null) {
         $this->nome = $nome;
         $this->sobrenome = $sobrenome;
         $this->graduacao = $graduacao;
@@ -19,8 +17,7 @@ class Professor
         $this->materia_id = $materia_id;
     }
 
-    public function cadastrarProfessor()
-    {
+    public function cadastraProfessor() {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("INSERT INTO professores (nome, sobrenome, graduacao, data_nascimento, materia_id) VALUES (:nome, :sobrenome, :graduacao, :data_nascimento, :materia_id)");
@@ -30,13 +27,12 @@ class Professor
             $sql->bindParam(':data_nascimento', $this->data_nascimento);
             $sql->bindParam(':materia_id', $this->materia_id);
             $sql->execute();
-        } catch (PDOException $erro) {
+        } catch(PDOException $erro) {
             echo "Cadastro falhou! " . $erro->getMessage();
         }
     }
 
-    public function listarProfessor()
-    {
+    public function ListaProfessor() {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("
@@ -53,27 +49,25 @@ class Professor
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
             return $result;
-        } catch (PDOException $erro) {
+        } catch(PDOException $erro) {
             echo "Erro ao listar professores! " . $erro->getMessage();
             return [];
         }
     }
+    
 
-
-    public function excluirProfessor($id)
-    {
+    public function excluirProfessor($id) {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("DELETE FROM professores WHERE id = :id");
             $sql->bindParam(':id', $id);
             $sql->execute();
-        } catch (PDOException $erro) {
+        } catch(PDOException $erro) {
             echo "Erro ao excluir professor! " . $erro->getMessage();
         }
     }
 
-    public function atualizarProfessor($id)
-    {
+    public function atualizarProfessor($id) {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("UPDATE professores SET nome = :nome, sobrenome = :sobrenome, graduacao = :graduacao, data_nascimento = :data_nascimento, materia_id = :materia_id WHERE id = :id");
@@ -84,13 +78,12 @@ class Professor
             $sql->bindParam(':materia_id', $this->materia_id);
             $sql->bindParam(':id', $id);
             $sql->execute();
-        } catch (PDOException $erro) {
+        } catch(PDOException $erro) {
             echo "Erro ao atualizar professor! " . $erro->getMessage();
         }
     }
 
-    public function buscarProfessorPorId($id)
-    {
+    public function getProfessorById($id) {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("SELECT id, nome, sobrenome, graduacao, data_nascimento, materia_id FROM professores WHERE id = :id");
@@ -98,69 +91,58 @@ class Professor
             $sql->execute();
             $result = $sql->fetch(PDO::FETCH_ASSOC);
             return $result;
-        } catch (PDOException $erro) {
+        } catch(PDOException $erro) {
             echo "Erro ao buscar professor! " . $erro->getMessage();
             return [];
         }
     }
 
-    public function getNome()
-    {
+    public function getNome() {
         return $this->nome;
     }
 
-    public function setNome($nome)
-    {
+    public function setNome($nome) {
         $this->nome = $nome;
     }
 
-    public function getSobrenome()
-    {
+    public function getSobrenome() {
         return $this->sobrenome;
     }
 
-    public function setSobrenome($sobrenome)
-    {
+    public function setSobrenome($sobrenome) {
         $this->sobrenome = $sobrenome;
     }
 
-    public function getGraduacao()
-    {
+    public function getGraduacao() {
         return $this->graduacao;
     }
 
-    public function setGraduacao($graduacao)
-    {
+    public function setGraduacao($graduacao) {
         $this->graduacao = $graduacao;
     }
 
-    public function getDataNascimento()
-    {
+    public function getDataNascimento() {
         return $this->data_nascimento;
     }
 
-    public function setDataNascimento($data_nascimento)
-    {
+    public function setDataNascimento($data_nascimento) {
         $this->data_nascimento = $data_nascimento;
     }
 
-    public function getMateriaId()
-    {
+    public function getMateriaId() {
         return $this->materia_id;
     }
 
-    public function setMateriaId($materia_id)
-    {
+    public function setMateriaId($materia_id) {
         $this->materia_id = $materia_id;
     }
 
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
     }
 }
+?>

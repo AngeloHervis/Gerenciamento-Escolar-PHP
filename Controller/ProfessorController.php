@@ -1,5 +1,5 @@
 <?php
-include_once('../Model/Professor.php');
+include_once('../Model/professor.php');
 
 class ProfessorController
 {
@@ -12,11 +12,11 @@ class ProfessorController
             $data_nascimento = $_POST['data_nascimento'];
             $materia_id = $_POST['materia_id'];
             $novoProfessor = new Professor($nome, $sobrenome, $graduacao, $data_nascimento, $materia_id);
-            $novoProfessor->cadastrarProfessor();
+            $novoProfessor->cadastraProfessor();
             echo "Professor cadastrado com sucesso!";
         } elseif ($acao == "R") {
             $professor = new Professor();
-            $resultado = $professor->listarProfessor();
+            $resultado = $professor->listaProfessor();
             include_once('../View/ListarProfessor.php');
         } elseif ($acao == "U") {
             $id = $_POST['id'];
@@ -78,7 +78,7 @@ class ProfessorController
             exit();
         } else {
             $professor = new Professor();
-            $professorAtual = $professor->buscarProfessorPorId($id);
+            $professorAtual = $professor->getProfessorById($id);
             include_once('../View/EditarProfessor.php');
         }
     }
@@ -103,3 +103,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $controller->processar($acao);
     }
 }
+?>

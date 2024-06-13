@@ -70,7 +70,7 @@ class OutroFuncionario
         }
     }
 
-    public function buscarOutroFuncionarioPorId($id)
+    public function getOutroFuncionarioById($id)
     {
         try {
             $conn = Conexao::conectar();

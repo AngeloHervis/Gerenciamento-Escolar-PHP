@@ -15,7 +15,7 @@ class SalaController
         } elseif ($acao == "R") {
             $sala = new Sala();
             $resultado = $sala->listarSala();
-            include_once('../View/listarSala.php');
+            include_once('../View/listarSala.php'); 
         } elseif ($acao == "U") {
             $id = $_POST['id'];
             $numero_sala = $_POST['numero_sala'];
@@ -61,6 +61,7 @@ class SalaController
     }
 }
 
+// Handling the request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $acao = $_GET['action'];
     $controller = new SalaController();

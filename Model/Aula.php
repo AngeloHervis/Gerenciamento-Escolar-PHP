@@ -1,8 +1,7 @@
 <?php
 include_once('Connect.php');
 
-class Aula
-{
+class Aula {
     private $id;
     private $horarioInicio;
     private $horarioFim;
@@ -10,8 +9,7 @@ class Aula
     private $professorId;
     private $salaId;
 
-    public function __construct($horarioInicio = null, $horarioFim = null, $disciplinaId = null, $professorId = null, $salaId = null)
-    {
+    public function __construct($horarioInicio = null, $horarioFim = null, $disciplinaId = null, $professorId = null, $salaId = null) {
         $this->horarioInicio = $horarioInicio;
         $this->horarioFim = $horarioFim;
         $this->disciplinaId = $disciplinaId;
@@ -19,8 +17,7 @@ class Aula
         $this->salaId = $salaId;
     }
 
-    public function cadastrarAula()
-    {
+    public function cadastraAula() {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("INSERT INTO aulas (horario_inicio, horario_fim, disciplina_id, professor_id, sala_id) VALUES (:horario_inicio, :horario_fim, :disciplina_id, :professor_id, :sala_id)");
@@ -30,13 +27,12 @@ class Aula
             $sql->bindParam(':professor_id', $this->professorId);
             $sql->bindParam(':sala_id', $this->salaId);
             $sql->execute();
-        } catch (PDOException $erro) {
+        } catch(PDOException $erro) {
             echo "Cadastro de aula falhou! " . $erro->getMessage();
         }
     }
 
-    public function listarAulas()
-    {
+    public function listaAulas() {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("
@@ -49,26 +45,24 @@ class Aula
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
             return $result;
-        } catch (PDOException $erro) {
+        } catch(PDOException $erro) {
             echo "Erro ao listar aulas! " . $erro->getMessage();
             return [];
         }
     }
 
-    public function excluirAula($id)
-    {
+    public function excluirAula($id) {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("DELETE FROM aulas WHERE id = :id");
             $sql->bindParam(':id', $id);
             $sql->execute();
-        } catch (PDOException $erro) {
+        } catch(PDOException $erro) {
             echo "Erro ao excluir aula! " . $erro->getMessage();
         }
     }
 
-    public function atualizarAula($id)
-    {
+    public function atualizarAula($id) {
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("UPDATE aulas SET horario_inicio = :horario_inicio, horario_fim = :horario_fim, disciplina_id = :disciplina_id, professor_id = :professor_id, sala_id = :sala_id WHERE id = :id");
@@ -79,68 +73,59 @@ class Aula
             $sql->bindParam(':sala_id', $this->salaId);
             $sql->bindParam(':id', $id);
             $sql->execute();
-        } catch (PDOException $erro) {
+        } catch(PDOException $erro) {
             echo "Erro ao atualizar aula! " . $erro->getMessage();
         }
     }
 
-    public function getId()
-    {
+    // Getters e setters
+
+    public function getId() {
         return $this->id;
     }
 
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
     }
 
-    public function getHorarioInicio()
-    {
+    public function getHorarioInicio() {
         return $this->horarioInicio;
     }
 
-    public function setHorarioInicio($horarioInicio)
-    {
+    public function setHorarioInicio($horarioInicio) {
         $this->horarioInicio = $horarioInicio;
     }
 
-    public function getHorarioFim()
-    {
+    public function getHorarioFim() {
         return $this->horarioFim;
     }
 
-    public function setHorarioFim($horarioFim)
-    {
+    public function setHorarioFim($horarioFim) {
         $this->horarioFim = $horarioFim;
     }
 
-    public function getDisciplinaId()
-    {
+    public function getDisciplinaId() {
         return $this->disciplinaId;
     }
 
-    public function setDisciplinaId($disciplinaId)
-    {
+    public function setDisciplinaId($disciplinaId) {
         $this->disciplinaId = $disciplinaId;
     }
 
-    public function getProfessorId()
-    {
+    public function getProfessorId() {
         return $this->professorId;
     }
 
-    public function setProfessorId($professorId)
-    {
+    public function setProfessorId($professorId) {
         $this->professorId = $professorId;
     }
 
-    public function getSalaId()
-    {
+    public function getSalaId() {
         return $this->salaId;
     }
 
-    public function setSalaId($salaId)
-    {
+    public function setSalaId($salaId) {
         $this->salaId = $salaId;
     }
 }
+?>

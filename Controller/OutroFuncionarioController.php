@@ -71,7 +71,7 @@ class OutroFuncionarioController
             exit();
         } else {
             $outroFuncionario = new OutroFuncionario();
-            $outroFuncionarioAtual = $outroFuncionario->buscarOutroFuncionarioPorId($id);
+            $outroFuncionarioAtual = $outroFuncionario->getOutroFuncionarioById($id);
             include_once('../View/EditarOutroFuncionario.php');
         }
     }
