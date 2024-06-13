@@ -16,18 +16,17 @@
         <label>Disciplina:</label>
         <select name="disciplina_id" required>
             <?php
-            // Incluir o arquivo de conexão com o banco de dados
+          
             include_once('../Model/materia.php');
 
-            // Criar uma instância da classe Materia
+          
             $materias = new Materia();
 
-            // Recuperar a lista de disciplinas
             $resultado = $materias->ListarMaterias();
 
-            // Verificar se há resultados
+           
             if (count($resultado) > 0) {
-                // Loop através dos resultados para criar as opções do select
+               
                 foreach ($resultado as $materia) {
                     echo "<option value='" . $materia['id'] . "'>" . $materia['nome'] . "</option>";
                 }
@@ -40,18 +39,15 @@
         <label>Professor:</label>
         <select name="professor_id" required>
             <?php
-            // Incluir o arquivo de conexão com o banco de dados
+            
             include_once('../Model/professor.php');
 
-            // Criar uma instância da classe Professor
             $professores = new Professor();
 
-            // Recuperar a lista de professores
             $resultado = $professores->ListaProfessor();
 
-            // Verificar se há resultados
             if (count($resultado) > 0) {
-                // Loop através dos resultados para criar as opções do select
+          
                 foreach ($resultado as $professor) {
                     echo "<option value='" . $professor['id'] . "'>" . $professor['nome'] . " " . $professor['sobrenome'] . "</option>";
                 }

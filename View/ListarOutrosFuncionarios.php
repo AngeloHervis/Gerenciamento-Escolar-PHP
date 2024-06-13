@@ -1,11 +1,9 @@
 <?php
-include_once('../Model/outrofuncionario.php'); // Importando a classe Materia
+include_once('../Model/outrofuncionario.php'); 
 
-// Recebendo os dados da consulta
 $outroFuncionario = new OutroFuncionario();
-$resultado = $outroFuncionario->ListarOutroFuncionario(); // Executando a consulta para listar as matérias
+$resultado = $outroFuncionario->ListarOutroFuncionario(); 
 
-// Verificando se há resultados
 if (count($resultado) > 0) {
 ?>
 

@@ -1,11 +1,9 @@
 <?php
-include_once('../Model/materia.php'); // Importando a classe Materia
+include_once('../Model/materia.php'); 
 
-// Recebendo os dados da consulta
 $materias = new Materia();
-$resultado = $materias->ListarMaterias(); // Executando a consulta para listar as matérias
+$resultado = $materias->ListarMaterias(); 
 
-// Verificando se há resultados
 if (count($resultado) > 0) {
 ?>
 
@@ -31,7 +29,7 @@ if (count($resultado) > 0) {
                 echo "<tr>";
                 echo "<td>" . $materia['nome'] . "</td>";
                 echo "<td>" . $materia['descricao'] . "</td>";
-                echo "<td><a href='../Controller/materiaController.php?action=delete&id=" . $materia['id'] . "'>Excluir</a></td>"; // Cor
+                echo "<td><a href='../Controller/materiaController.php?action=delete&id=" . $materia['id'] . "'>Excluir</a></td>"; 
                 echo "<td><a href='../View/editar.php?id=" . $materia['id'] . "'>Editar</a></td>";
                 echo "</tr>";
             }

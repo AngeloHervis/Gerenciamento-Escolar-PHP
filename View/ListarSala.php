@@ -1,11 +1,9 @@
 <?php
-include_once('../Model/sala.php'); // Importando a classe Materia
+include_once('../Model/sala.php'); 
 
-// Recebendo os dados da consulta
 $salas = new Sala();
-$resultado = $salas->ListarSala(); // Executando a consulta para listar as matérias
+$resultado = $salas->ListarSala(); 
 
-// Verificando se há resultados
 if (count($resultado) > 0) {
 ?>
 
@@ -32,7 +30,7 @@ if (count($resultado) > 0) {
                 echo "<td>" . $sala['numero_sala'] . "</td>";
                 echo "<td>" . $sala['capacidade'] . "</td>";
                 echo "<td>" . $sala['localizacao'] . "</td>";
-                echo "<td><a href='../Controller/salaController.php?action=delete&id=" . $sala['id'] . "'>Excluir</a></td>"; // Cor
+                echo "<td><a href='../Controller/salaController.php?action=delete&id=" . $sala['id'] . "'>Excluir</a></td>"; 
                 echo "<td><a href='../View/editar.php?id=" . $materia['id'] . "'>Editar</a></td>";
                 echo "</tr>";
             }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        /* Estilos básicos para a estrutura */
+        
         body {
             font-family: "Roboto Slab", serif;
             margin: 0;
@@ -120,9 +120,9 @@
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
                 if (validateForm()) {
-                    // Aqui você pode realizar o envio do formulário via AJAX ou simplesmente alertar o sucesso
+        
                     alert('Login realizado com sucesso!');
-                    form.submit(); // Submete o formulário após validação
+                    form.submit(); 
                 }
             });
 

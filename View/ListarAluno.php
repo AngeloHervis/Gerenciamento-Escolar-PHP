@@ -1,11 +1,9 @@
 <?php
-include_once('../Model/aluno.php'); // Importando a classe Aluno
+include_once('../Model/aluno.php'); 
 
-// Recebendo os dados da consulta
 $alunos = new Aluno();
-$resultado = $alunos->listarAluno(); // Executando a consulta para listar os alunos
+$resultado = $alunos->listarAluno(); 
 
-// Verificando se há resultados
 if (count($resultado) > 0) {
 ?>
 

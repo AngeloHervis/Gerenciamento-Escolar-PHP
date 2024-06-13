@@ -1,11 +1,9 @@
 <?php
-include_once('../Model/professor.php'); // Importando a classe Materia
+include_once('../Model/professor.php'); 
 
-// Recebendo os dados da consulta
 $professores = new Professor();
-$resultado = $professores->ListaProfessor(); // Executando a consulta para listar as matérias
+$resultado = $professores->ListaProfessor(); 
 
-// Verificando se há resultados
 if (count($resultado) > 0) {
 ?>
 

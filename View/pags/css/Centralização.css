@@ -1,0 +1,12 @@
+.centralizar-section {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+.centralizar-section h2 {
+    margin-bottom: 20px;
+}
+.centraliza-section p {
+    max-width: 600px;
+    margin: 0 auto;
+}
