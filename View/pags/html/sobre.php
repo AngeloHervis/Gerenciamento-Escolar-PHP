@@ -7,23 +7,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/View/pags/css/index.css"> 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <link type="image/png" sizes="16x16" rel="icon" href="../../../assets/icons8-school-16.png">
+    <link rel="stylesheet" href="../css/sobrenos.css"> 
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="nav-links">
-                <a href="index.php">Home</a>
+                <a href="../../../../index.php">Home</a>
                 <a href="sobre.php">Sobre Nós</a>
                 <a href="faleconosco.php">Fale Conosco</a>
             </div>
             <div class="login">
-                <img src="/assets/user-icon-svgrepo-com.svg" alt="Login" width="24" height="24">
+                <img src="../../../assets/user-icon-svgrepo-com.svg" alt="Login" width="24" height="24">
                 <a href="login.php">Login</a>
             </div>
         </nav>
@@ -56,14 +52,14 @@
         <section class="social-section" id="social-section">
             <h2>Acesse nossas redes sociais!</h2>
             <ul>
-                <li><a href="#"><img src="/assets/facebook-svgrepo-com.svg" alt="Facebook"></a></li>
-                <li><a href="#"><img src="/assets/youtube-svgrepo-com.svg" alt="Youtube"></a></li>
-                <li><a href="#"><img src="/assets/instagram-svgrepo-com.svg" alt="Instagram"></a></li>
+                <li><a href="#"><img src="../../../assets/facebook-svgrepo-com.svg" alt="Facebook"></a></li>
+                <li><a href="#"><img src="../../../assets/youtube-svgrepo-com.svg" alt="Youtube"></a></li>
+                <li><a href="#"><img src="../../../assets/instagram-svgrepo-com.svg" alt="Instagram"></a></li>
             </ul>
         </section>
     </main>
     <footer class="footer">
-        <p>&copy; 2024 Gerenciamento Escolar. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Instituto Educacional Nova Era. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>

@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if ($username == 'professor') {
-            header("Location: ../View/cadastrarprofessor.php");
+            header("Location: ../View/CadastrarProfessor.php");
         } elseif ($username == 'funcionario') {
-            header("Location: ../View/cadastrarfuncionario.php");
+            header("Location: ../View/CadastrarFuncionario.php");
         }
         exit;
     } else {
