@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Sobre Nós</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
@@ -18,9 +18,9 @@
     <header>
         <nav class="navbar">
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="sobre.html">Sobre Nós</a>
-                <a href="faleconosco.html">Fale Conosco</a>
+                <a href="index.php">Home</a>
+                <a href="sobre.php">Sobre Nós</a>
+                <a href="faleconosco.php">Fale Conosco</a>
             </div>
             <div class="login">
                 <img src="/assets/user-icon-svgrepo-com.svg" alt="Login" width="24" height="24">
@@ -31,18 +31,25 @@
     
     <main>
         <section class="welcome-section">
-            <h1>Bem-vindo ao Instituto Educacional Nova Era</h1>
+            <h1>Sobre Nós</h1>
         </section>
-        
-        <section class="education-section">
-            <h2>Tipos de Ensino Oferecidos</h2>
-            <p>Nossa escola oferece uma ampla variedade de modalidades de ensino para atender às necessidades de todos os alunos, incluindo:</p>
+        <section class="sobre-section">
+            <h1>Sobre Nós</h1>
+            <p>O Instituto Educacional Nova Era foi fundado com o objetivo de proporcionar uma educação de qualidade, promovendo o desenvolvimento integral dos nossos alunos. Com uma equipe de profissionais altamente qualificados e uma infraestrutura moderna, buscamos oferecer um ambiente acolhedor e estimulante para o aprendizado.</p>
+            
+            <h2>Nossa Missão</h2>
+            <p>Transformar vidas através da educação, preparando nossos alunos para os desafios do futuro com competência e ética.</p>
+            
+            <h2>Visão</h2>
+            <p>Ser uma instituição de referência na educação, reconhecida pela excelência acadêmica e pela formação de cidadãos conscientes e atuantes na sociedade.</p>
+            
+            <h2>Valores</h2>
             <ul>
-                <li>Ensino Infantil</li>
-                <li>Ensino Fundamental</li>
-                <li>Ensino Médio</li>
-                <li>Educação de Jovens e Adultos (EJA)</li>
-                <li>Cursos Técnicos</li>
+                <li>Respeito</li>
+                <li>Ética</li>
+                <li>Compromisso</li>
+                <li>Inovação</li>
+                <li>Inclusão</li>
             </ul>
         </section>
 

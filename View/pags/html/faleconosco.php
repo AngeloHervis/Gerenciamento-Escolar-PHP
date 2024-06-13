@@ -13,9 +13,9 @@
     <header>
         <nav class="navbar">
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="sobre.html">Sobre Nós</a>
-                <a href="faleconosco.html">Fale Conosco</a>
+                <a href="index.php">Home</a>
+                <a href="sobre.php">Sobre Nós</a>
+                <a href="faleconosco.php">Fale Conosco</a>
             </div>
             <div class="login">
                 <img src="/assets/user-icon-svgrepo-com.svg" alt="Login" width="24" height="24">
