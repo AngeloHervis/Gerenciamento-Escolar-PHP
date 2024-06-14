@@ -1,0 +1,115 @@
+
+body {
+    font-family: "Roboto Slab", serif;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+}
+.navbar a:hover {
+    background-color: #575757;
+}
+.login {
+    display: flex;
+    align-items: center;
+}
+.login img {
+    margin-right: 10px;
+}
+.welcome-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://static.vecteezy.com/system/resources/previews/003/244/663/non_2x/interior-of-a-school-classroom-with-wooden-desks-photo.jpg') no-repeat center center;
+    background-size: cover;
+    height: 400px;
+    color: white;
+    text-align: center;
+}
+.welcome-section h1 {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+.education-section {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+.education-section h2 {
+    margin-bottom: 20px;
+}
+.education-section p {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.social-section {
+    padding: 100px 90px;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+.social-section h2 {
+    margin-bottom: 20px;
+}
+.social-section ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.social-section ul li {
+    display: inline;
+}
+.social-section ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+.social-section ul li img {
+    width: 40px;
+    height: 40px;
+}
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.sobre-section {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+.sobre-section h2 {
+    margin-bottom: 20px;
+}
+.sobre-section p {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.faleconosco-section {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+.faleconosco-section h2 {
+    margin-bottom: 20px;
+}
+.faleconosco-section p {
+    max-width: 600px;
+    margin: 0 auto;
+}
